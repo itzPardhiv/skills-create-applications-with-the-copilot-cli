@@ -20,4 +20,22 @@ describe('basic calculator operations', () => {
     expect(calc.division(20, 5)).toBe(4);
     expect(() => calc.division(1, 0)).toThrow('Division by zero');
   });
+
+  test('modulo', () => {
+    expect(calc.modulo(5, 2)).toBe(1);
+    expect(calc.modulo('10', 3)).toBe(1);
+    expect(() => calc.modulo(1, 0)).toThrow('Division by zero');
+  });
+
+  test('power', () => {
+    expect(calc.power(2, 3)).toBe(8);
+    expect(calc.power('3', 3)).toBe(27);
+    expect(calc.power(2, 0)).toBe(1);
+  });
+
+  test('squareRoot', () => {
+    expect(calc.squareRoot(16)).toBe(4);
+    expect(calc.squareRoot('9')).toBe(3);
+    expect(() => calc.squareRoot(-1)).toThrow('Negative value');
+  });
 });
