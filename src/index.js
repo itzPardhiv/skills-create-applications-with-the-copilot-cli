@@ -116,23 +116,33 @@ function interactive() {
   });
 }
 
-// Main
-try {
-  const argv = process.argv;
-  if (argv.includes('-h') || argv.includes('--help')) {
-    showHelp();
-    process.exit(0);
-  }
+// Main (exposed for tests)
+function main() {
+  try {
+    const argv = process.argv;
+    if (argv.includes('-h') || argv.includes('--help')) {
+      showHelp();
+      process.exit(0);
+    }
 
-  const maybe = tryComputeFromArgs(argv);
-  if (maybe !== null) {
-    console.log(maybe);
-    process.exit(0);
-  }
+    const maybe = tryComputeFromArgs(argv);
+    if (maybe !== null) {
+      console.log(maybe);
+      process.exit(0);
+    }
 
-  // No valid args -> interactive mode
-  interactive();
-} catch (err) {
-  console.error('Error:', err.message);
-  process.exit(1);
+    // No valid args -> interactive mode
+    interactive();
+  } catch (err) {
+    console.error('Error:', err.message);
+    process.exit(1);
+  }
+}
+
+// Export compute for unit tests
+module.exports = { compute };
+
+// Only run the CLI when executed directly
+if (require.main === module) {
+  main();
 }

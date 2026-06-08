@@ -5,6 +5,12 @@
   "bin": {
     "calc": "src/index.js"
   },
+  "scripts": {
+    "test": "jest --runInBand"
+  },
+  "devDependencies": {
+    "jest": "^29.6.1"
+  },
   "author": "",
   "license": "MIT",
   "engines": {
